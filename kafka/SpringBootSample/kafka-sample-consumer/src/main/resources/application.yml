@@ -1,0 +1,26 @@
+server:
+  port: 8080
+     
+spring:
+  application:
+    name: kafka-consumer
+    
+  kafka:
+    bootstrap-servers: my-cluster.kafka.43.203.62.69.nip.io:32100
+    security:
+      protocol: SASL_PLAINTEXT
+    properties:
+      sasl:
+        jaas:
+          config: org.apache.kafka.common.security.scram.ScramLoginModule required username="edu-user" password="oXTjENLJMvdKV6CbQmU2NX0e87Rezxhc";
+        mechanism: SCRAM-SHA-512
+     
+    consumer:
+      group-id: edu-topic13-cg         # 본인의 그룹명으로 수정할것
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: earliest    # earliest, latest
+      enable-auto-commit: false
+
+topic:
+  name: edu-topic13                 # 본인의 토픽명으로 수정할것

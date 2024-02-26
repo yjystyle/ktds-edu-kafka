@@ -1,0 +1,24 @@
+server:
+  port: 8081
+
+
+spring:
+  application:
+    name: kafka-producer
+    
+  kafka:
+    producer:
+      acks: 1
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    bootstrap-servers: my-cluster.kafka.43.203.62.69.nip.io:32100
+    security:
+      protocol: SASL_PLAINTEXT
+    properties:
+      sasl:
+        jaas:
+          config: org.apache.kafka.common.security.scram.ScramLoginModule required username="edu-user" password="oXTjENLJMvdKV6CbQmU2NX0e87Rezxhc";
+        mechanism: SCRAM-SHA-512
+
+topic:
+  name: edu-topic13                 # 본인의 토픽명으로 수정할것
